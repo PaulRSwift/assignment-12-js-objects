@@ -166,31 +166,35 @@ console.assert(ninjaListOfObjects[3].firstName === "Billy")
 // pluck(stooges, 'name') should yield the array, ['moe','larry','curly']
 
 
-//input: array of objects
-var pluck = function(stooges){
-   for (var i = 0; i < stooges.length; i++) {
-      console.log(stooges[i]);
-
-      if (stooges = 'name'){
-         return stooges.name
-      } else if(stooges = 'hairStyle'){
-         return stooges.hairStyle
-      }
-      console.log(stooges);
-      return stooges
-   }
-
-}
-
 var stooges = [
    {name: 'moe', age: 40, hairStyle: "bowl cut" },
    {name: 'larry', age: 50, hairStyle: "balding"},
    {name: 'curly', age: 60, hairStyle: "buzzed"}
 ]
 
+
+//input: array of objects
+var pluck = function(stooges, propStr){
+
+   var arrayCopy = []
+
+   for (var i = 0; i < stooges.length; i++) {
+      //console.log(stooges[i]);
+
+      var itemObject = stooges[i]
+      var valueForName = itemObject[propStr]
+      arrayCopy.push(valueForName)
+
+      //console.log(arrayCopy);
+
+   }
+   return arrayCopy
+}
+
 console.assert( pluck(stooges, 'name')[0] === 'moe' )
 console.assert( pluck(stooges, 'hairStyle')[2] === "buzzed" )
 console.assert( pluck(stooges, 'age')[2] === 60 )
+
 
 
 
@@ -206,12 +210,38 @@ I need a fake passport, preferably to France. I like the way they think. Oh, COM
 I'm foolish and I'm funny and I'm needy. Am I needy? Are you sure I'm not needy? 'Cause I feel needy sometimes. Obviously this blue part here is the land. \
 Let's see some bananas and nuts! This was a big get for God. They don't allow you to have bees in here. I want to cry so bad, but I don't think I can spare the moisture. No, Pop-pop does not get a treat, I just brought you a [bleep]ing pizza. It walked on my pillow! I'll buy you a hundred George Michaels that you can teach to drive! A group of British builders operating outside the O.C."
 
+//input: text
+
+var getCounts = function (strOfText) {
+   var wordCountObject = {}
+
+   var arrOfWords = strOfText.toLowerCase().split(" ")
+
+   for (var i = 0; i < arrOfWords.length; i++) {
+      //console.log(arrOfWords[i])
+      var theWord = arrOfWords[i]
+
+      if (typeof wordCountObject[theWord] === 'undefined'){
+         wordCountObject[theWord] = 1
+      } else {
+         wordCountObject[theWord] = wordCountObject[theWord] + 1
+      }
+
+   }
+
+   console.log(wordCountObject);
+
+   return wordCountObject
+   //output: object -- wordCount directory
+
+}
+
+
 var wordFrequencyObject = getCounts(sampleText)
 
 
 console.assert( wordFrequencyObject.need === 3 )
 console.assert( wordFrequencyObject.you === 9 )
-
 // EXPLORER MODE - PART 2
 //-----------------------------
 // console.assert(wordFrequencyObject.needy === 4)
