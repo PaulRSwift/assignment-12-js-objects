@@ -1,37 +1,57 @@
-// Part 4
 
-// Write a function pluck() that, given a list of objects, extracts a list of
-// the values associated with a given property name.
+/// Part 3
 
-// e.g:
-// pluck(stooges, 'name') should yield the array, ['moe','larry','curly']
-
-
-var stooges = [
-   {name: 'moe', age: 40, hairStyle: "bowl cut" },
-   {name: 'larry', age: 50, hairStyle: "balding"},
-   {name: 'curly', age: 60, hairStyle: "buzzed"}
-]
+// Write a function called generateDog that returns an object which represents a dog.
+// The dog object should have attributes like legs, weight and color. The dog *constructor*
+// (which is, almost, what this is) should take a name input, and the dog should receive the
+// assigned name.
 
 
-//input: array of objects
-var pluck = function(stooges, propStr){
+//input string
+var speak = function (strwd) {
+   for (var i = 0; i < strwd.length; i++) {
+   var singleWord = strwd[i]
+   //console.log(singleWord);
+   var wordArray = singleWord.split('')
+   wordArray[0] = wordArray[0] = "r"
 
-   var arrayCopy = []
-
-   for (var i = 0; i < stooges.length; i++) {
-      //console.log(stooges[i]);
-
-      var itemObject = stooges[i]
-      var valueForName = itemObject[propStr]
-      arrayCopy.push(valueForName)
-
-      //console.log(arrayCopy);
-
-   }
-   return arrayCopy
 }
 
-console.assert( pluck(stooges, 'name')[0] === 'moe' )
-console.assert( pluck(stooges, 'hairStyle')[2] === "buzzed" )
-console.assert( pluck(stooges, 'age')[2] === 60 )
+var dogTalkStr =  wordArray.join('')
+
+console.log(dogTalkStr);
+return dogTalkStr
+   }
+
+var generateDog = function (str) {
+   var dog = {
+      name : str,
+      legs : 4,
+      speak: speak,
+   }
+   //console.log(dog);
+   return dog
+}
+
+
+
+//output object
+
+var dog = generateDog('rex')
+
+//getting app.js:26 Uncaught SyntaxError: Unexpected end of input on the assert values
+
+console.assert(dog.legs === 4)
+console.assert(dog.name === 'rex')
+
+var dog = generateDog('carl')
+console.assert(dog.name === 'carl')
+
+
+// Give the dog a method called .speak(). speak() should receive a string as input and
+// return a new version of that string where the first letter of every word is replaced
+// with the letter 'r'.
+
+
+console.assert(dog.speak('i love you') === 'r rove rou')
+console.assert(dog.speak('so hungry') === 'ro rungry')
