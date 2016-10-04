@@ -280,9 +280,16 @@ var object = {
     structural_integrity: "failing"
 }
 
+console.log(object);
+
+var reverseObject = function(object){
+   for (var i = 0; i > object.length; i--) {
+      console.log(object[i])
+   }
+}
+
 var reversed = reverseObject(object)
 console.assert( reversed['2b'] === 'apartment_no' )
-
 //******************************
 // ADVENTURE MODE ( 7 - 10 )
 

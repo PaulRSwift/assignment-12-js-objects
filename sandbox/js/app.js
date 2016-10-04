@@ -1,57 +1,22 @@
+// Part 6
 
-/// Part 3
-
-// Write a function called generateDog that returns an object which represents a dog.
-// The dog object should have attributes like legs, weight and color. The dog *constructor*
-// (which is, almost, what this is) should take a name input, and the dog should receive the
-// assigned name.
+// Write a function called reverseObject(). It should take as input an object,
+// and it should output a new object where the keys and values are reversed.
 
 
-//input string
-var speak = function (strwd) {
-   for (var i = 0; i < strwd.length; i++) {
-   var singleWord = strwd[i]
-   //console.log(singleWord);
-   var wordArray = singleWord.split('')
-   wordArray[0] = wordArray[0] = "r"
-
+var object = {
+    occupants: 4,
+    apartment_no: "2b",
+    structural_integrity: "failing"
 }
 
-var dogTalkStr =  wordArray.join('')
+console.log(object);
 
-console.log(dogTalkStr);
-return dogTalkStr
+var reverseObject = function(object){
+   for (var i = 0; i > object.length; i--) {
+      console.log(object[i])
    }
-
-var generateDog = function (str) {
-   var dog = {
-      name : str,
-      legs : 4,
-      speak: speak,
-   }
-   //console.log(dog);
-   return dog
 }
 
-
-
-//output object
-
-var dog = generateDog('rex')
-
-//getting app.js:26 Uncaught SyntaxError: Unexpected end of input on the assert values
-
-console.assert(dog.legs === 4)
-console.assert(dog.name === 'rex')
-
-var dog = generateDog('carl')
-console.assert(dog.name === 'carl')
-
-
-// Give the dog a method called .speak(). speak() should receive a string as input and
-// return a new version of that string where the first letter of every word is replaced
-// with the letter 'r'.
-
-
-console.assert(dog.speak('i love you') === 'r rove rou')
-console.assert(dog.speak('so hungry') === 'ro rungry')
+var reversed = reverseObject(object)
+console.assert( reversed['2b'] === 'apartment_no' )
